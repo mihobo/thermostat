@@ -6,7 +6,7 @@ describe("Thermostat", function(){
   beforeEach(function(){
   thermostat = new Thermostat();
    });
-   
+
    describe("#temperature", function(){
      it("will be set to twenty at initialisation", function(){
         expect(thermostat.temperature).toEqual(20);
@@ -27,4 +27,12 @@ describe("Thermostat", function(){
      });
    });
 
+   describe("#checkMinimum", function(){
+     it("will throw an error if the temp is below 10 degrees", function() {
+       for(var i = 20; i >= 10; i--) {
+         thermostat.down();
+       };
+       expect( function() { thermostat.checkMinimum() } ).toThrow(new Error("Brrr"));
+     });
+   });
 });

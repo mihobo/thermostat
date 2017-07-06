@@ -13,11 +13,11 @@ Thermostat.prototype.up = function() {
 };
 
 Thermostat.prototype.down = function() {
-  this.checkMinimum();
+  this.checkMin();
   this.temperature--;
 };
 
-Thermostat.prototype.checkMinimum = function() {
+Thermostat.prototype.checkMin = function() {
   if (this.temperature <= this.minTemp) {
     throw new Error("Brrr");
   }
@@ -32,7 +32,20 @@ Thermostat.prototype.checkMax = function() {
   }
 };
 
-
 Thermostat.prototype.powerSavingModeSwitch = function () {
-  return this.powerSavingModeOn = !this.powerSavingModeOn;
+  this.powerSavingModeOn = !this.powerSavingModeOn;
+};
+
+Thermostat.prototype.reset = function () {
+  this.temperature = 20;
+};
+
+Thermostat.prototype.currentEnergyUsage = function () {
+  if (this.temperature < 18) {
+    return "low-usage"
+  } else if (this.temperature < 25) {
+    return "medium-usage"
+  } else {
+    return "high-usage"
+  };
 };

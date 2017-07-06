@@ -35,4 +35,19 @@ describe("Thermostat", function(){
        expect( function() { thermostat.checkMinimum() } ).toThrow(new Error("Brrr"));
      });
    });
+
+   describe("#powerSavingModeOn", function(){
+     it("has power saving mode on by default", function() {
+       expect(thermostat.powerSavingModeOn).toEqual(true);
+     });
+   });
+
+   describe("#maxTemp", function(){
+     it("has a maximum temperature of 25 degrees", function() {
+      for(var i = 20; i <= 25; i++) {
+        thermostat.up();
+      };
+      expect( function() { thermostat.checkMax() } ).toThrow(new Error("Cannot go beyond 25"));
+    });
+  });
 });

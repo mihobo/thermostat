@@ -88,11 +88,13 @@ describe("Thermostat", function(){
       for (var i = 20; i >= 18; i--) {
         thermostat.down();
       }
-      expect(thermostat.currentEnergyUsage()).toEqual("low-usage");
+      thermostat.currentEnergyUsage();
+      expect(thermostat.usage).toEqual("low-usage");
     });
     
     it("checks the current energy usage is medium", function() {
-      expect(thermostat.currentEnergyUsage()).toEqual("medium-usage");
+      thermostat.currentEnergyUsage();
+      expect(thermostat.usage).toEqual("medium-usage");
     });
     
     it("checks the current enevery usage is high", function() {
@@ -100,7 +102,8 @@ describe("Thermostat", function(){
       for (var i = 20; i < 26; i++) {
         thermostat.up();
       }
-      expect(thermostat.currentEnergyUsage()).toEqual("high-usage")
+      thermostat.currentEnergyUsage();
+      expect(thermostat.usage).toEqual("high-usage")
     });
   });
 });

@@ -4,17 +4,31 @@
   <meta charset="utf-8">
   <title>Bemo Thermostat</title>
   <script src="src/thermostat.js"> </script>
-  <!-- <a href=“http://imgur.com/eKOKYHc“>
-  <img src=“http://i.imgur.com/eKOKYHc.jpg” title=“source: imgur.com” />
-</a> -->
-<link >
+
+  <script src="jquery.js"></script>
+
+  <script>
+    $(document).ready(function(){
+      var thermostat = new Thermostat;
+      $("#Up").click(function(){
+        $("p").hide();
+      });
+    });
+  </script>
 </head>
+
 <body>
-  <section>
-    This is the display
+
+  <section id="display">
+    <p id="current-temp"> current temp: 20 </p>
+    <p id="max-temp"> max temp: 25 </p>
+    <p id="min-temp"> min temp: 10  </p>
+    <p id="PSM"> PSM: ON </p>
+    <p id="usage"> medium-usage </p>
   </section>
-  <section>
-    <button id="up">Up</button>
+
+  <section id="temperature">
+    <button id="Up">Up</button>
     <button id="Down">Down</button>
     <button id="Reset">Reset</button>
     <button id="PSM">PSM Switch</button>
